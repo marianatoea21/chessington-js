@@ -14,12 +14,17 @@ export default class Pawn extends Piece {
 
         if (this.player === Player.WHITE) {
             moves.push(Square.at(currentSquare.row + 1, currentSquare.col));
-        }
 
+            if (currentSquare.row === 1) {
+                moves.push(Square.at(currentSquare.row + 2, currentSquare.col));
+            }
+        }
         if (this.player === Player.BLACK) {
             moves.push(Square.at(currentSquare.row - 1, currentSquare.col));
+            if (currentSquare.row === 6) {
+                moves.push(Square.at(currentSquare.row - 2, currentSquare.col));
+            }
         }
-
         return moves;
     }
 }
