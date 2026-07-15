@@ -13,10 +13,14 @@ export default class Knight extends Piece {
         const moves: Square[] =[];
 
         const directions = [
-            [2, 1], [2, -1],
-            [-2, 1], [-2, -1],
-            [1, 2], [1, -2],
-            [-1, 2], [-1, -2]
+            [2, 1], // up-up-right
+            [2, -1], // up-up-left
+            [-2, 1], // down-down-right
+            [-2, -1], // down-down-left
+            [1, 2], // up-right-right
+            [1, -2], // up-left-left
+            [-1, 2], // down-right-right
+            [-1, -2] // down-right-right
         ]
 
         for (const [rowOffset, colOffset] of directions) {

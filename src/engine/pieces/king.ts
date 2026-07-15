@@ -13,8 +13,14 @@ export default class King extends Piece {
         const moves: Square[] = [];
 
         const directions = [
-            [1, 1], [1, -1], [-1, 1], [-1, -1],
-            [1, 0], [0, 1], [-1, 0], [0, -1]
+            [1, 1], // up-right
+            [1, -1], // up-left
+            [-1, 1], // down-right
+            [-1, -1], // down-left
+            [1, 0], // up
+            [-1, 0], // down
+            [0, 1], // right
+            [0, -1]  // left
         ]
 
         for (const [rowOffset, colOffset] of directions) {

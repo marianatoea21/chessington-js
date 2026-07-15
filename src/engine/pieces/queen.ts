@@ -13,10 +13,10 @@ export default class Queen extends Piece {
         const moves: Square[] = [];
 
         const directions = [
-            [1, 1],
-            [1, -1],
-            [-1, 1],
-            [-1, -1]
+            [1, 1], // up-right
+            [1, -1], // up-left
+            [-1, 1], // down-right
+            [-1, -1] // down-left
         ]
 
         for (const [rowOffset, colOffset] of directions) {
