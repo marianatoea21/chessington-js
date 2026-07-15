@@ -31,7 +31,6 @@ export default class King extends Piece {
                 moves.push(Square.at(newRow, newCol));
             }
         }
-
         return moves;
     }
 }

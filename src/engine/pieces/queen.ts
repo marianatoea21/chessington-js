@@ -2,15 +2,16 @@ import Piece from './piece';
 import Player from '../player';
 import Board from '../board';
 import Square from "../square";
+import IntermediatePiece from "./intermediatePiece";
 
-export default class Queen extends Piece {
+export default class Queen extends IntermediatePiece {
     public constructor(player: Player) {
         super(player);
     }
 
     public getAvailableMoves(board: Board) {
         const currentSquare: Square = board.findPiece(this);
-        const moves: Square[] = [];
+        let moves: Square[] = [];
 
         const directions = [
             [1, 1], // up-right
@@ -19,31 +20,18 @@ export default class Queen extends Piece {
             [-1, -1] // down-left
         ]
 
-        for (const [rowOffset, colOffset] of directions) {
-            let i = 1;
-            while (true) {
-                const newRow = currentSquare.row + rowOffset * i;
-                const newCol = currentSquare.col + colOffset * i;
+        moves = this.getDiagonalMoves(board, currentSquare);
+        moves.concat(this.getStraightMoves(board, currentSquare));
 
-                if (newRow < 0 || newRow > 7 || newCol > 7 || newCol < 0) {
-                    break;
-                }
+        for (let coordinate = 0; coordinate < 8; coordinate++) {
+            if (coordinate !== currentSquare.col) {
+                moves.push(Square.at(currentSquare.row, coordinate));
+            }
 
-                moves.push(Square.at(newRow, newCol));
-                i++;
+            if (coordinate !== currentSquare.row) {
+                moves.push(Square.at(coordinate, currentSquare.col));
             }
         }
-
-        for (let i = 0; i < 8; i++) {
-            if (i !== currentSquare.col) {
-                moves.push(Square.at(currentSquare.row, i));
-            }
-
-            if (i !== currentSquare.row) {
-                moves.push(Square.at(i, currentSquare.col));
-            }
-        }
-
         return moves;
     }
 }
