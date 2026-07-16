@@ -1,13 +1,16 @@
-import Piece from './piece';
 import Player from '../player';
 import Board from '../board';
+import IntermediatePiece from "./intermediatePiece";
 
-export default class Rook extends Piece {
+export default class Rook extends IntermediatePiece {
     public constructor(player: Player) {
         super(player);
     }
 
     public getAvailableMoves(board: Board) {
-        return new Array(0);
+        const currentSquare = board.findPiece(this);
+
+        return this.getStraightMoves(board, currentSquare);
     }
 }
+

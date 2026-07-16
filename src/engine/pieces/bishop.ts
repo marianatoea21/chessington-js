@@ -1,13 +1,15 @@
-import Piece from './piece';
 import Player from '../player';
 import Board from '../board';
+import IntermediatePiece from "./intermediatePiece";
 
-export default class Bishop extends Piece {
+export default class Bishop extends IntermediatePiece {
     public constructor(player: Player) {
         super(player);
     }
 
     public getAvailableMoves(board: Board) {
-        return new Array(0);
+        const currentSquare = board.findPiece(this);
+
+        return this.getDiagonalMoves(board, currentSquare);
     }
 }
