@@ -1,7 +1,5 @@
-import Piece from './piece';
 import Player from '../player';
 import Board from '../board';
-import Square from "../square";
 import IntermediatePiece from "./intermediatePiece";
 
 export default class Rook extends IntermediatePiece {

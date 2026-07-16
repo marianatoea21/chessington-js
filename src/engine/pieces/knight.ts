@@ -20,7 +20,7 @@ export default class Knight extends Piece {
             [1, 2], // up-right-right
             [1, -2], // up-left-left
             [-1, 2], // down-right-right
-            [-1, -2] // down-right-right
+            [-1, -2] // down-left-left
         ]
 
         for (const [rowOffset, colOffset] of directions) {
